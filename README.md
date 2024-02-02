@@ -25,7 +25,7 @@ Hacker news client
 
 ## Functions supported
 1. Search
-2. HN Fronte Page
-3. ASK HN
-4. SHOW HN
+2. HN Front Page
+3. Ask HN
+4. Show HN
 5. Pagination
