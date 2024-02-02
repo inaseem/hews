@@ -7,7 +7,7 @@ type FilterTagProps = {
 const FilterTag = ({ name, onClick, isActive = false }: FilterTagProps) => {
   return (
     <div
-      className={`cursor-pointer transition flex items-baseline gap-2 rounded-sm px-2 py-1 border ${
+      className={`cursor-pointer transition flex items-baseline gap-2 rounded-sm px-2 py-1 border hover:border-primary-500 ${
         isActive ? 'border-primary-500' : 'border-gray-800'
       }`}
       onClick={onClick}
