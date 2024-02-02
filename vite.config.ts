@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig(({ mode }) => {
   return {
+    base: mode === 'production' ? '/news/' : '/',
     plugins: [react()],
     test: {
       environment: 'jsdom',
