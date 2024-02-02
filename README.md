@@ -1,5 +1,7 @@
 # HEWS - Hackernews
 
+https://inaseem.github.io/hews/
+
 Hacker news client
 
 ## Setup
