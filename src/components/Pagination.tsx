@@ -49,7 +49,7 @@ export const Pagination = ({
                 return (
                   <li
                     {...api.getItemProps(page)}
-                    className={`cursor-pointer text-xs px-2 py-1 md:px-3 md:py-2 border border-gray-800 h-full grid place-items-center ${
+                    className={`cursor-pointer rounded-sm transition border text-xs px-2 py-1 md:px-3 md:py-2 border-gray-800 hover:border-primary-600 h-full grid place-items-center ${
                       api.page === page.value
                         ? 'bg-primary-600'
                         : 'bg-transparent'
