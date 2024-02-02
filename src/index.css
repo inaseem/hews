@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    color-scheme: dark;
+    --color-primary-100: 204,251,241;
+    --color-primary-200: 153,246,228;
+    --color-primary-300: 94,234,212;
+    --color-primary-400: 45,212,191;
+    --color-primary-500: 20,184,166;
+    --color-primary-600: 13,148,136;
+    --color-primary-700: 15,118,110;
+    --color-primary-800: 17,94,89;
+    --color-primary-900: 19,78,74;
+    --color-gray-100: 244,244,245;
+    --color-gray-200: 228,228,231;
+    --color-gray-300: 212,212,216;
+    --color-gray-400: 161,161,170;
+    --color-gray-500: 113,113,122;
+    --color-gray-600: 82,82,91;
+    --color-gray-700: 63,63,70;
+    --color-gray-800: 39,39,42;
+    --color-gray-900: 24,24,27;
+}
