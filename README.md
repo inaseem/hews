@@ -1,30 +1,31 @@
-# React + TypeScript + Vite (HEWS - Hackernews)
+# HEWS - Hackernews
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Hacker news client
 
-Currently, two official plugins are available:
+## Setup
+1. Clone the repository 
+2. run `yarn` in the root dirctory
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Running
+1. `yarn dev`
 
-## Expanding the ESLint configuration
+## Running tests
+1. `yarn test`
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Production build
+1. `yarn build`
 
-- Configure the top-level `parserOptions` property like this:
+## Tech Stech
+1. React
+2. TypeScript
+3. Vite
+4. React Router
+5. React Query
+6. Zag UI + Tailwind
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Functions supported
+1. Search
+2. HN Fronte Page
+3. ASK HN
+4. SHOW HN
+5. Pagination
