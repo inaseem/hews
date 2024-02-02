@@ -4,3 +4,5 @@ export const queryParamsMapping = {
   restrictSearchableAttributes: 'restrictSearchableAttributes',
   page: 'page',
 };
+
+export const baseURL = import.meta.env.PROD ? '/hews' : '/';
