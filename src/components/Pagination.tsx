@@ -21,10 +21,15 @@ export const Pagination = ({
     pagination.machine({
       id,
       count: totalItems,
-      page,
-      pageSize,
-      onPageChange,
-    })
+    }),
+    {
+      context: {
+        count: totalItems,
+        page,
+        pageSize,
+        onPageChange,
+      },
+    }
   );
 
   const api = pagination.connect(state, send, normalizeProps);

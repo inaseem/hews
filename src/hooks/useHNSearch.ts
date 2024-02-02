@@ -31,7 +31,7 @@ const useHNSearch = () => {
 
   const queryString = getQueryString();
 
-  const searchBy = searchQuery ? 'search_by_date' : 'search';
+  const searchBy = searchQuery || tags ? 'search_by_date' : 'search';
 
   const query = useQuery({
     queryKey: ['HN', queryString],

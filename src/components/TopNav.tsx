@@ -7,11 +7,18 @@ import BackButton from './BackButton';
 
 const TopNav = () => {
   const { pathname } = useLocation();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
 
   const handleBackClick = () => {
     navigate(-1);
+  };
+
+  const handleTitleClick = () => {
+    searchParams.delete(queryParamsMapping.query);
+    searchParams.delete(queryParamsMapping.tags);
+    searchParams.delete(queryParamsMapping.page);
+    setSearchParams(searchParams);
   };
 
   const initialSearchValue = searchParams.get(queryParamsMapping.query) || '';
@@ -22,7 +29,10 @@ const TopNav = () => {
       <div className="flex items-center justify-between gap-8">
         <div className="flex gap-6 items-center">
           {!isHome && <BackButton onClick={handleBackClick} />}
-          <h1 className="font-bold uppercase tracking-widest text-lg sm:text-xl">
+          <h1
+            className="font-bold uppercase tracking-widest text-lg sm:text-xl cursor-pointer"
+            onClick={handleTitleClick}
+          >
             HEWS
           </h1>
         </div>
