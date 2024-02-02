@@ -7,15 +7,15 @@ Hacker news client
 2. run `yarn` in the root dirctory
 
 ## Running
-1. `yarn dev`
+`yarn dev`
 
 ## Running tests
-1. `yarn test`
+`yarn test`
 
 ## Production build
-1. `yarn build`
+`yarn build`
 
-## Tech Stech
+## Tech Stack
 1. React
 2. TypeScript
 3. Vite
