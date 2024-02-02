@@ -7,4 +7,4 @@ export const queryParamsMapping = {
 
 export const hnAPIBaseURL = 'https://hn.algolia.com/api/v1';
 
-export const baseURL = import.meta.env.PROD ? '/hews' : '/';
+export const baseURL = import.meta.env.BASE_URL;
