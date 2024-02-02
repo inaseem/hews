@@ -1,8 +1,8 @@
 import { useQuery } from 'react-query';
-import { GetArticleResponse } from '../api/types';
 import { useSearchParams } from 'react-router-dom';
-import { queryParamsMapping } from '../constants';
 import api from '../api';
+import { GetArticleResponse } from '../api/types';
+import { hnAPIBaseURL, queryParamsMapping } from '../constants';
 
 const useHNSearch = () => {
   const [searchParams] = useSearchParams();
@@ -36,9 +36,7 @@ const useHNSearch = () => {
   const query = useQuery({
     queryKey: ['HN', queryString],
     queryFn: () =>
-      api<GetArticleResponse>(
-        `http://hn.algolia.com/api/v1/${searchBy}?${queryString}`
-      ),
+      api<GetArticleResponse>(`${hnAPIBaseURL}/${searchBy}?${queryString}`),
   });
   return query;
 };

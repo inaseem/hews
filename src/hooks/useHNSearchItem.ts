@@ -1,14 +1,14 @@
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
-import { GetStoryDetailsResponse } from '../api/types';
 import api from '../api';
+import { GetStoryDetailsResponse } from '../api/types';
+import { hnAPIBaseURL } from '../constants';
 
 const useHNSearchItem = () => {
   const { id } = useParams();
   const query = useQuery({
     queryKey: ['HN_ITEM', id],
-    queryFn: () =>
-      api<GetStoryDetailsResponse>(`http://hn.algolia.com/api/v1/items/${id}`),
+    queryFn: () => api<GetStoryDetailsResponse>(`${hnAPIBaseURL}/items/${id}`),
   });
   return query;
 };
