@@ -1,6 +1,6 @@
 const FallbackLoader = () => {
   return (
-    <div className="h-screen w-screen grid place-items-center">
+    <div className="h-full w-full grid place-items-center">
       <img
         src={`${import.meta.env.BASE_URL}favicon.svg`}
         alt="Loading..."
