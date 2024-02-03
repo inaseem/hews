@@ -1,6 +1,6 @@
 import { timeAgo } from '../utils';
 
-interface ArticaleProps {
+interface ArticleProps {
   title: string;
   link?: string;
   upvotesCount: number;
@@ -20,7 +20,7 @@ const Article = ({
   link,
   onClick,
   isComment,
-}: ArticaleProps) => {
+}: ArticleProps) => {
   return (
     <div
       className="item cursor-pointer py-4 px-5 border bg-opacity-25 border-transparent transition hover:border-primary-500 dark:hover:bg-primary-600 dark:hover:bg-opacity-[0.1] border-b group"
