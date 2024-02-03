@@ -32,7 +32,10 @@ export type GetArticleResponse = {
     objectID: string;
     points: number;
     story_id: number;
-    title: string;
+    title?: string;
+    story_title?: string;
+    comment_text?: string;
+    job_text?: string;
     updated_at: string;
     url: string;
   }[];

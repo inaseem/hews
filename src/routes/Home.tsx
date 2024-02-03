@@ -54,11 +54,16 @@ const Home = () => {
       <PageLayout>
         <EmptyView
           title="No results found"
-          description="There are no results available currently. Please try updating the filters above and refresh below to check again"
+          description="There are no results available currently. Please try updating the filters and retry."
           actions={
-            <Button onClick={() => refetch()} disabled={isFetching}>
-              Refresh
-            </Button>
+            <div className="flex gap-2 flex-wrap">
+              <Button onClick={() => refetch()} disabled={isFetching}>
+                Refresh
+              </Button>
+              <Button onClick={() => setSearchParams()} disabled={isFetching}>
+                Clear Filters
+              </Button>
+            </div>
           }
         />
       </PageLayout>
@@ -83,9 +88,10 @@ const Home = () => {
                 commentsCount={hit.num_comments}
                 createdAt={hit.created_at}
                 createdBy={hit.author}
-                title={hit.title}
+                title={hit.title || hit.comment_text || ''}
                 link={hit.url}
                 upvotesCount={hit.points}
+                isComment={Boolean(hit.comment_text)}
               />
             </li>
           ))}
