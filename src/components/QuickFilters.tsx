@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import {
   queryParamsMapping,
   searchByOptions,
-  // searchForOptions,
+  searchForOptions,
   searchInOptions,
 } from '../constants';
 import useDebounce from '../hooks/useDebounce';
@@ -20,7 +20,7 @@ const QuickFilters = () => {
   const searchQuery = searchParams.get(queryParamsMapping.query);
 
   const [query, setQuery] = useState(searchQuery ?? '');
-  // const searchFor = searchParams.get(queryParamsMapping.searchFor);
+  const searchFor = searchParams.get(queryParamsMapping.searchFor);
 
   const handleSearchInValueChange = (
     e: ValueChangeDetails<SelectOptionType>
@@ -40,13 +40,12 @@ const QuickFilters = () => {
     });
   };
 
-  // TODO: Implement searchFor
-  // const handleSearchForValueChange = (
-  //   e: ValueChangeDetails<SelectOptionType>
-  // ) => {
-  //   searchParams.set(queryParamsMapping.searchFor, e.value.join(''));
-  //   setSearchParams(searchParams);
-  // };
+  const handleSearchForValueChange = (
+    e: ValueChangeDetails<SelectOptionType>
+  ) => {
+    searchParams.set(queryParamsMapping.searchFor, e.value.join(''));
+    setSearchParams(searchParams);
+  };
 
   // DeBounce Function
   useDebounce(
@@ -72,14 +71,6 @@ const QuickFilters = () => {
     setQuery(e.target.value);
   };
 
-  // const handleClear = () => {
-  //   setQuery('');
-  //   setSearchParams((searchParams) => {
-  //     searchParams.delete(queryParamsMapping.searchIn);
-  //     return searchParams;
-  //   });
-  // };
-
   return (
     <div className="flex flex-col gap-6 flex-wrap w-full">
       <SearchField value={query} onChange={handleQueryChange} />
@@ -97,12 +88,12 @@ const QuickFilters = () => {
           items={searchByOptions}
           onValueChange={handleSearchByValueChange}
         />
-        {/* <Select
-        label="for"
-        value={searchFor ?? ''}
-        items={searchForOptions}
-        onValueChange={handleSearchForValueChange}
-      /> */}
+        <Select
+          label="for"
+          value={searchFor ?? ''}
+          items={searchForOptions}
+          onValueChange={handleSearchForValueChange}
+        />
       </div>
     </div>
   );

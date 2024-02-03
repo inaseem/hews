@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useQuery } from 'react-query';
 import { useSearchParams } from 'react-router-dom';
 import api from '../api';
@@ -7,15 +8,15 @@ import {
   queryParamsMapping,
   searchInQueryParamToValueMapping,
 } from '../constants';
-import { apiParamMapping } from './../constants';
 import { getCreatedAtTimeFromSearchForValue } from '../utils';
+import { apiParamMapping } from './../constants';
 
 const useHNSearch = () => {
   const [searchParams] = useSearchParams();
 
   const searchBy = searchParams.get(queryParamsMapping.searchBy);
 
-  const getQueryString = () => {
+  const queryString = useMemo(() => {
     const searchIn = searchParams.get(queryParamsMapping.searchIn) ?? 'all';
     const searchFor = searchParams.get(queryParamsMapping.searchFor);
     const searchQuery = searchParams.get(queryParamsMapping.query);
@@ -51,9 +52,7 @@ const useHNSearch = () => {
     }
 
     return params.toString();
-  };
-
-  const queryString = getQueryString();
+  }, [searchParams]);
 
   const searchType = searchBy === 'date' ? 'search_by_date' : 'search';
 
