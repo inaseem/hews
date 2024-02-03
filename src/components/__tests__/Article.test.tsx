@@ -12,6 +12,7 @@ describe('Article', () => {
         onClick={() => null}
         title="LK99 discovered"
         upvotesCount={456}
+        isComment={false}
       />
     );
 
@@ -32,6 +33,7 @@ describe('Article', () => {
         onClick={mockedFn}
         title="LK99 discovered"
         upvotesCount={456}
+        isComment={false}
       />
     );
 
