@@ -18,6 +18,7 @@
     "@zag-js/pagination": "^0.34.0",
     "@zag-js/progress": "^0.34.0",
     "@zag-js/react": "^0.34.0",
+    "@zag-js/select": "^0.34.0",
     "date-fns": "^3.3.1",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.3",

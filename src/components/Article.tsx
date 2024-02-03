@@ -7,6 +7,7 @@ interface ArticaleProps {
   commentsCount: number;
   createdBy: string;
   createdAt: string;
+  isComment: boolean;
   onClick: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 
@@ -18,6 +19,7 @@ const Article = ({
   createdAt,
   link,
   onClick,
+  isComment,
 }: ArticaleProps) => {
   return (
     <div
@@ -25,9 +27,7 @@ const Article = ({
       onClick={onClick}
     >
       <div className="w-full">
-        <h4 className="font-bold dark:font-semibold tracking-wide text-lg leading-tight">
-          {title}
-        </h4>
+        <h4 className={`font-bold dark:font-semibold tracking-wide ${isComment?'text-sm':'text-lg'} leading-tight`} dangerouslySetInnerHTML={{__html: title}}/>
         {link ? (
           <div className="w-full overflow-hidden">
             <a
@@ -51,11 +51,13 @@ const Article = ({
               {timeAgo(createdAt)}
             </span>
           </div>
-          <div className="flex items-center">
-            <div className="comments uppercase text-xs transition font-semibold group-hover:font-bold text-gray-600 dark:text-gray-400 group-hover:text-white">
-              {commentsCount} Comments
+          {!isComment && (
+            <div className="flex items-center">
+              <div className="comments uppercase text-xs transition font-semibold group-hover:font-bold text-gray-600 dark:text-gray-400 group-hover:text-white">
+                {commentsCount} Comments
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
