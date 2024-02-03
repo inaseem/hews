@@ -26,8 +26,8 @@ Hacker news client
 6. Zag UI + Tailwind
 
 ## Functions supported
-1. Search
-2. HN Front Page
-3. Ask HN
-4. Show HN
-5. Pagination
+1. Search in (ALL, Front Page, Stories, Comments, Polls, Jobs, Ask HN, Show HN, Launch HN)
+2. Search by (Popularity, Date)
+3. Search for (All Time, Last 24h, Past Week, Past Month, Past Year)
+4. Read story comments
+4. Pagination
