@@ -13,7 +13,7 @@ const Comment = ({ data }: CommentProps) => {
     <div className="py-4 px-5">
       <div className="w-full">
         <div
-          className="leading-relaxed whitespace-pre-line before:bg-gradient-to-b before:from-transparent before:to-white dark:before:to-gray-800 text-sm [&_a]:text-primary-600"
+          className="overflow-x-auto leading-relaxed whitespace-pre-line before:bg-gradient-to-b before:from-transparent before:to-white dark:before:to-gray-800 text-sm [&_a]:text-primary-600"
           dangerouslySetInnerHTML={{ __html: data.text || '' }}
         />
         <div className="flex justify-between mt-2">

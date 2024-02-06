@@ -46,7 +46,7 @@ export const StoryHeader = ({ data }: StoryHeaderProps) => {
             </div>
             {data.text ? (
               <div
-                className="mt-2 text-sm leading-relaxed whitespace-pre-line before:bg-gradient-to-b before:from-transparent before:to-white dark:before:to-gray-800 [&_a]:text-primary-600"
+                className="overflow-x-auto mt-2 text-sm leading-relaxed whitespace-pre-line before:bg-gradient-to-b before:from-transparent before:to-white dark:before:to-gray-800 [&_a]:text-primary-600"
                 dangerouslySetInnerHTML={{ __html: data.text }}
               />
             ) : null}
