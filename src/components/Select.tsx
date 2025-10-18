@@ -38,7 +38,7 @@ export const Select = (props: SelectProps<SelectOptionType>) => {
         </label>
         <button
           {...api.triggerProps}
-          className="rounded-sm transition flex gap-4 items-center px-2 py-1 text-xs border border-gray-800 hover:border-primary-600 focus:border-primary-600 disabled:opacity-70 dark:disabled:hover:border-gray-800 disabled:hover:text-current disabled:cursor-not-allowed"
+          className="rounded-sm transition flex gap-4 items-center px-2 lg:px-3 py-2 text-xs lg:text-sm border border-gray-800 hover:border-primary-600 focus:border-primary-600 disabled:opacity-70 dark:disabled:hover:border-gray-800 disabled:hover:text-current disabled:cursor-not-allowed"
         >
           {api.valueAsString || 'Select option'}
           <svg
@@ -58,14 +58,14 @@ export const Select = (props: SelectProps<SelectOptionType>) => {
       <Portal>
         <div
           {...api.positionerProps}
-          className="z-50 text-xs bg-gray-800 border border-gray-800 rounded-sm"
+          className="z-50 bg-gray-800 border border-gray-800 rounded-sm"
         >
           <ul {...api.contentProps} className="">
             {items.map((item) => (
               <li
                 key={item.value}
                 {...api.getItemProps({ item })}
-                className="transition rounded-sm px-2 py-1 flex justify-between gap-4 cursor-pointer border dark:hover:border-primary-600 border-gray-800"
+                className="transition rounded-sm text-sm lg:text-sm lg:px-3 px-2 py-1 flex justify-between gap-4 cursor-pointer border dark:hover:border-primary-600 border-gray-800"
               >
                 <span>{item.label}</span>
                 <span {...api.getItemIndicatorProps({ item })}>✓</span>
