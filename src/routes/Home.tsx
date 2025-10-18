@@ -107,8 +107,8 @@ const Home = () => {
     }
 
     return (
-      <div className="flex-1 flex flex-col min-h-0 bg-white dark:bg-gray-900">
-        <div className="sticky top-0 z-10">
+      <div className="flex-1 flex flex-col min-h-0 overflow-hidden bg-white dark:bg-gray-900">
+        <div className="flex-shrink-0">
           <Progress isIntermediate={isFetching} />
         </div>
 
@@ -135,7 +135,7 @@ const Home = () => {
           ))}
         </div>
 
-        <div className="sticky bottom-0 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 flex justify-center w-full">
+        <div className="flex-shrink-0 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 flex justify-center w-full py-2">
           <Pagination
             page={data.page + 1}
             pageSize={data.hitsPerPage}
@@ -151,17 +151,17 @@ const Home = () => {
 
   return (
     <PageLayout>
-      <div className="h-full flex flex-col lg:flex-row">
-        <div className="lg:hidden px-4 py-1 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+      <div className="h-full flex flex-col lg:flex-row overflow-hidden">
+        <div className="lg:hidden px-4 py-1 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 flex-shrink-0">
           <QuickFilters />
         </div>
 
-        <div className="hidden lg:block">
+        <div className="hidden lg:block flex-shrink-0">
           <FilterSidebar onTabChange={onTabChange} />
         </div>
 
-        <div className="flex-1 flex flex-col min-h-0 relative">
-          <div className="hidden lg:block px-6 py-4 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+        <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
+          <div className="hidden lg:block px-6 py-4 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 flex-shrink-0">
             <SubFilters />
           </div>
           {renderContent()}

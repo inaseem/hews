@@ -19,8 +19,8 @@ const AppContent = () => {
 
   return (
     <div className="bg-gray-100 dark:bg-gray-900 dark:text-gray-300 h-full">
-      <div className={`mx-auto ${isHome ? 'max-w-[700px] lg:max-w-none lg:w-full' : 'max-w-[700px]'}`}>
-        <div className="h-screen">
+      <div className={`mx-auto h-full ${isHome ? 'max-w-[700px] lg:max-w-none lg:w-full' : 'max-w-[700px]'}`}>
+        <div className="h-full">
           <AppRoutes />
         </div>
       </div>

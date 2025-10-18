@@ -35,13 +35,13 @@ export const Pagination = ({
   const api = pagination.connect(state, send, normalizeProps);
 
   return (
-    <div className="py-4 px-5 sm:py-3 sm:px-4">
+    <div className="py-2 px-2 sm:py-3 sm:px-4">
       {api.totalPages > 1 && (
         <nav {...api.rootProps}>
-          <ul className="inline-flex gap-2 items-center flex-wrap">
-            <li>
-              <Button disabled={api.isFirstPage} {...api.prevTriggerProps}>
-                Previous
+          <ul className="inline-flex gap-1 items-center overflow-x-auto">
+            <li className="flex-shrink-0">
+              <Button disabled={api.isFirstPage} {...api.prevTriggerProps} className="text-xs px-1.5 py-1 md:px-2">
+                Prev
               </Button>
             </li>
             {api.pages.map((page, i) => {
@@ -49,7 +49,7 @@ export const Pagination = ({
                 return (
                   <li
                     {...api.getItemProps(page)}
-                    className={`cursor-pointer rounded-sm transition border text-xs px-2 py-1 md:px-3 md:py-2 border-gray-800 hover:border-primary-600 h-full grid place-items-center ${
+                    className={`cursor-pointer rounded-sm transition border text-xs px-1.5 py-1 border-gray-800 hover:border-primary-600 h-full grid place-items-center min-w-[28px] flex-shrink-0 ${
                       api.page === page.value
                         ? 'bg-primary-600'
                         : 'bg-transparent'
@@ -61,13 +61,13 @@ export const Pagination = ({
                 );
               else
                 return (
-                  <li className="cursor-pointer" key={`ellipsis-${i}`}>
+                  <li className="cursor-pointer px-1 flex-shrink-0" key={`ellipsis-${i}`}>
                     <span {...api.getEllipsisProps({ index: i })}>&#8230;</span>
                   </li>
                 );
             })}
-            <li>
-              <Button disabled={api.isLastPage} {...api.nextTriggerProps}>
+            <li className="flex-shrink-0">
+              <Button disabled={api.isLastPage} {...api.nextTriggerProps} className="text-xs px-1.5 py-1 md:px-2">
                 Next
               </Button>
             </li>
