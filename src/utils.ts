@@ -35,15 +35,13 @@ export const handleTabChange = (
   setSearchParams((prevParams) => {
     const newParams = new URLSearchParams(prevParams);
     newParams.set(queryParamsMapping.searchIn, value);
+    newParams.delete(queryParamsMapping.page);
     
     if (value === 'frontPage') {
-      // Reset all filters for front page
       newParams.delete(queryParamsMapping.searchBy);
       newParams.delete(queryParamsMapping.searchFor);
       newParams.delete(queryParamsMapping.query);
-      newParams.delete(queryParamsMapping.page);
     } else {
-      // Set default filters for other tabs
       const defaultSearchFor = getDefaultTimeRange(value) || 'pastMonth'; // Fallback to pastMonth
       
       newParams.set(queryParamsMapping.searchBy, 'date');
