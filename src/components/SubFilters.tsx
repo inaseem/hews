@@ -4,8 +4,8 @@ import { useSearchParams } from "react-router-dom";
 import {
   queryParamsMapping,
   searchByOptions,
-  searchForOptions,
   searchInOptions,
+  getFilteredSearchForOptions,
 } from "../constants";
 import useDebounce from "../hooks/useDebounce";
 import { SelectOptionType } from "../types";
@@ -67,6 +67,8 @@ const SubFilters = () => {
     setQuery(e.target.value);
   };
 
+  const filteredSearchForOptions = getFilteredSearchForOptions(searchIn);
+
   // Don't show filters for Front Page
   if (searchIn === 'frontPage') {
     return null;
@@ -90,7 +92,7 @@ const SubFilters = () => {
         <Select
           label=""
           value={searchFor ?? ""}
-          items={searchForOptions}
+          items={filteredSearchForOptions}
           onValueChange={handleSearchForValueChange}
         />
       </div>

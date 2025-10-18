@@ -3,6 +3,7 @@ import { queryParamsMapping, searchInOptions } from "../constants";
 import FilterTabs from "./FilterTabs";
 import FilterSidebar from "./FilterSidebar";
 import SubFilters from "./SubFilters";
+import { handleTabChange as utilHandleTabChange } from "../utils";
 
 const QuickFilters = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -11,11 +12,7 @@ const QuickFilters = () => {
   const isFrontPage = searchIn === 'frontPage';
 
   const handleTabChange = (value: string) => {
-    setSearchParams((prevParams) => {
-      const newParams = new URLSearchParams(prevParams);
-      newParams.set(queryParamsMapping.searchIn, value);
-      return newParams;
-    });
+    utilHandleTabChange(value, setSearchParams, queryParamsMapping);
   };
 
   return (

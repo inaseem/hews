@@ -7,7 +7,7 @@ interface FilterSidebarProps {
 }
 
 const FilterSidebar = ({ onTabChange }: FilterSidebarProps) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const activeTab = searchParams.get(queryParamsMapping.searchIn) ?? searchInOptions[0].value;
 
   const handleTabClick = (option: SelectOptionType) => {
@@ -15,7 +15,7 @@ const FilterSidebar = ({ onTabChange }: FilterSidebarProps) => {
   };
 
   const handleTitleClick = () => {
-    setSearchParams();
+    onTabChange('frontPage');
   };
 
   return (

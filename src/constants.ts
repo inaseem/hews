@@ -76,6 +76,57 @@ export const searchForOptions: SelectOptionType[] = [
   { key: 'pastYear', label: 'Past Year', value: 'pastYear' },
 ];
 
+export const tabConfig = {
+  frontPage: {
+    allowedForDropdownFilters: [], // No filters shown for front page
+    defaultTimeRange: null,
+  },
+  stories: {
+    allowedForDropdownFilters: ['allTime', 'last24Hours', 'pastWeek', 'pastMonth', 'pastYear'],
+    defaultTimeRange: 'last24Hours',
+  },
+  askHn: {
+    allowedForDropdownFilters: ['allTime', 'last24Hours', 'pastWeek', 'pastMonth', 'pastYear'],
+    defaultTimeRange: 'last24Hours',
+  },
+  showHn: {
+    allowedForDropdownFilters: ['allTime', 'last24Hours', 'pastWeek', 'pastMonth', 'pastYear'],
+    defaultTimeRange: 'last24Hours',
+  },
+  launchHn: {
+    allowedForDropdownFilters: ['allTime', 'pastMonth', 'pastYear'], // Exclude last24Hours, pastWeek
+    defaultTimeRange: 'pastMonth',
+  },
+  jobs: {
+    allowedForDropdownFilters: ['allTime', 'pastMonth', 'pastYear'], // Exclude last24Hours, pastWeek
+    defaultTimeRange: 'pastMonth',
+  },
+  polls: {
+    allowedForDropdownFilters: ['allTime', 'pastMonth', 'pastYear'], // Exclude last24Hours, pastWeek
+    defaultTimeRange: 'pastMonth',
+  },
+  comments: {
+    allowedForDropdownFilters: ['allTime', 'last24Hours', 'pastWeek', 'pastMonth', 'pastYear'],
+    defaultTimeRange: 'last24Hours',
+  },
+} as const;
+
+export const getTabConfig = (tabValue: string) => {
+  return tabConfig[tabValue as keyof typeof tabConfig] || tabConfig.stories; // Default to stories config
+};
+
+export const getFilteredSearchForOptions = (tabValue: string): SelectOptionType[] => {
+  const config = getTabConfig(tabValue);
+  return searchForOptions.filter(option => 
+    (config.allowedForDropdownFilters as readonly string[]).includes(option.value)
+  );
+};
+
+export const getDefaultTimeRange = (tabValue: string): string | null => {
+  const config = getTabConfig(tabValue);
+  return config.defaultTimeRange;
+};
+
 export const hnAPIBaseURL = 'https://hn.algolia.com/api/v1';
 
 export const baseURL = import.meta.env.BASE_URL;

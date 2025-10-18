@@ -1,16 +1,17 @@
-import { useEffect, useRef } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import useHNSearch from '../hooks/useHNSearch';
-import Article from '../components/Article';
-import { Progress } from '../components/Progress';
-import EmptyView from '../components/EmptyView';
-import Button from '../components/Button';
-import PageLayout from '../components/PageLayout';
-import { Pagination } from '../components/Pagination';
-import QuickFilters from '../components/QuickFilters';
-import FilterSidebar from '../components/FilterSidebar';
-import SubFilters from '../components/SubFilters';
-import { queryParamsMapping } from '../constants';
+import { useEffect, useRef } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import useHNSearch from "../hooks/useHNSearch";
+import Article from "../components/Article";
+import { Progress } from "../components/Progress";
+import EmptyView from "../components/EmptyView";
+import Button from "../components/Button";
+import PageLayout from "../components/PageLayout";
+import { Pagination } from "../components/Pagination";
+import QuickFilters from "../components/QuickFilters";
+import FilterSidebar from "../components/FilterSidebar";
+import SubFilters from "../components/SubFilters";
+import { queryParamsMapping } from "../constants";
+import { handleTabChange } from "../utils";
 
 const Home = () => {
   const { data, isLoading, isError, isFetching, refetch } = useHNSearch();
@@ -19,16 +20,22 @@ const Home = () => {
 
   // Restore scroll position on mount
   useEffect(() => {
-    const savedScroll = sessionStorage.getItem('homeScrollPosition');
+    const savedScroll = sessionStorage.getItem("homeScrollPosition");
     if (savedScroll && scrollRef.current) {
-      setTimeout(() => scrollRef.current?.scrollTo(0, parseInt(savedScroll)), 50);
+      setTimeout(
+        () => scrollRef.current?.scrollTo(0, parseInt(savedScroll)),
+        50
+      );
     }
   }, []);
 
   // Save scroll position before navigating
   const handleArticleClick = (objectID: string) => {
     if (scrollRef.current) {
-      sessionStorage.setItem('homeScrollPosition', scrollRef.current.scrollTop.toString());
+      sessionStorage.setItem(
+        "homeScrollPosition",
+        scrollRef.current.scrollTop.toString()
+      );
     }
     navigate(`/${objectID}`);
   };
@@ -43,6 +50,10 @@ const Home = () => {
     });
   };
 
+  const onTabChange = (searchIn: string) => {
+    handleTabChange(searchIn, setSearchParams, queryParamsMapping);
+  };
+
   if (isLoading) {
     return (
       <PageLayout>
@@ -54,13 +65,7 @@ const Home = () => {
 
           {/* Desktop: Sidebar */}
           <div className="hidden lg:block">
-            <FilterSidebar onTabChange={(value: string) => {
-              setSearchParams((prevParams) => {
-                const newParams = new URLSearchParams(prevParams);
-                newParams.set(queryParamsMapping.searchIn, value);
-                return newParams;
-              });
-            }} />
+            <FilterSidebar onTabChange={onTabChange} />
           </div>
 
           {/* Content Area */}
@@ -89,25 +94,15 @@ const Home = () => {
     return (
       <PageLayout>
         <div className="h-full flex flex-col lg:flex-row">
-          {/* Mobile: Filters at top */}
           <div className="lg:hidden px-4 py-1.5 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
             <QuickFilters />
           </div>
 
-          {/* Desktop: Sidebar */}
           <div className="hidden lg:block">
-            <FilterSidebar onTabChange={(value: string) => {
-              setSearchParams((prevParams) => {
-                const newParams = new URLSearchParams(prevParams);
-                newParams.set(queryParamsMapping.searchIn, value);
-                return newParams;
-              });
-            }} />
+            <FilterSidebar onTabChange={onTabChange} />
           </div>
 
-          {/* Content Area */}
           <div className="flex-1 flex flex-col min-h-0 relative">
-            {/* Desktop: Search and filters at top */}
             <div className="hidden lg:block px-6 py-4 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
               <SubFilters />
             </div>
@@ -133,25 +128,15 @@ const Home = () => {
     return (
       <PageLayout>
         <div className="h-full flex flex-col lg:flex-row">
-          {/* Mobile: Filters at top */}
           <div className="lg:hidden px-4 py-1 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
             <QuickFilters />
           </div>
 
-          {/* Desktop: Sidebar */}
           <div className="hidden lg:block">
-            <FilterSidebar onTabChange={(value: string) => {
-              setSearchParams((prevParams) => {
-                const newParams = new URLSearchParams(prevParams);
-                newParams.set(queryParamsMapping.searchIn, value);
-                return newParams;
-              });
-            }} />
+            <FilterSidebar onTabChange={onTabChange} />
           </div>
 
-          {/* Content Area */}
           <div className="flex-1 flex flex-col min-h-0 relative">
-            {/* Desktop: Search and filters at top */}
             <div className="hidden lg:block px-6 py-4 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
               <SubFilters />
             </div>
@@ -165,7 +150,10 @@ const Home = () => {
                     <Button onClick={() => refetch()} disabled={isFetching}>
                       Refresh
                     </Button>
-                    <Button onClick={() => setSearchParams()} disabled={isFetching}>
+                    <Button
+                      onClick={() => setSearchParams()}
+                      disabled={isFetching}
+                    >
                       Clear Filters
                     </Button>
                   </div>
@@ -181,25 +169,15 @@ const Home = () => {
   return (
     <PageLayout>
       <div className="h-full flex flex-col lg:flex-row">
-        {/* Mobile: Filters at top */}
         <div className="lg:hidden px-4 py-1 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
           <QuickFilters />
         </div>
 
-        {/* Desktop: Sidebar */}
         <div className="hidden lg:block">
-          <FilterSidebar onTabChange={(value: string) => {
-            setSearchParams((prevParams) => {
-              const newParams = new URLSearchParams(prevParams);
-              newParams.set(queryParamsMapping.searchIn, value);
-              return newParams;
-            });
-          }} />
+          <FilterSidebar onTabChange={onTabChange} />
         </div>
 
-        {/* Content Area */}
         <div className="flex-1 flex flex-col min-h-0 relative">
-          {/* Desktop: Search and filters at top */}
           <div className="hidden lg:block px-6 py-4 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
             <SubFilters />
           </div>
@@ -209,7 +187,10 @@ const Home = () => {
               <Progress isIntermediate={isFetching} />
             </div>
 
-            <div ref={scrollRef} className="flex-1 overflow-auto lg:px-6 py-2 lg:py-4">
+            <div
+              ref={scrollRef}
+              className="flex-1 overflow-auto lg:px-6 py-2 lg:py-4"
+            >
               {data.hits.map((hit) => (
                 <div key={hit.objectID}>
                   <Article
@@ -220,7 +201,7 @@ const Home = () => {
                     commentsCount={hit.num_comments}
                     createdAt={hit.created_at}
                     createdBy={hit.author}
-                    title={hit.title || hit.comment_text || ''}
+                    title={hit.title || hit.comment_text || ""}
                     link={hit.url}
                     upvotesCount={hit.points}
                     isComment={Boolean(hit.comment_text)}
@@ -228,7 +209,7 @@ const Home = () => {
                 </div>
               ))}
             </div>
-            
+
             <div className="sticky bottom-0 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 flex justify-center w-full">
               <Pagination
                 page={data.page + 1}
