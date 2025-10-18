@@ -1,8 +1,8 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, useLocation } from 'react-router-dom';
 import { AppRoutes } from './AppRoutes';
-import TopNav from './components/TopNav';
 import { baseURL } from './constants';
+import { paths } from './routes/constants';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -13,18 +13,26 @@ const queryClient = new QueryClient({
   },
 });
 
+const AppContent = () => {
+  const { pathname } = useLocation();
+  const isHome = pathname === paths.root;
+
+  return (
+    <div className="bg-gray-100 dark:bg-gray-900 dark:text-gray-300 h-full">
+      <div className={`mx-auto ${isHome ? 'max-w-[700px] lg:max-w-none lg:w-full' : 'max-w-[700px]'}`}>
+        <div className="h-screen">
+          <AppRoutes />
+        </div>
+      </div>
+    </div>
+  );
+};
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter basename={baseURL}>
-        <div className="bg-gray-100 dark:bg-gray-900 dark:text-gray-300 h-full">
-          <div className="mx-auto max-w-[700px]">
-            <div className="grid grid-rows-[auto_1fr] h-screen">
-              <TopNav />
-              <AppRoutes />
-            </div>
-          </div>
-        </div>
+        <AppContent />
       </BrowserRouter>
     </QueryClientProvider>
   );

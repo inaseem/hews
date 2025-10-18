@@ -17,7 +17,7 @@ const useHNSearch = () => {
   const searchBy = searchParams.get(queryParamsMapping.searchBy);
 
   const queryString = useMemo(() => {
-    const searchIn = searchParams.get(queryParamsMapping.searchIn) ?? 'all';
+    const searchIn = searchParams.get(queryParamsMapping.searchIn) ?? 'frontPage';
     const searchFor = searchParams.get(queryParamsMapping.searchFor);
     const searchQuery = searchParams.get(queryParamsMapping.query);
     const page = searchParams.get(queryParamsMapping.page) ?? '1';

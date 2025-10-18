@@ -1,7 +1,6 @@
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { paths } from '../routes/constants';
 import BackButton from './BackButton';
-import QuickFilters from './QuickFilters';
 
 const TopNav = () => {
   const { pathname } = useLocation();
@@ -15,22 +14,17 @@ const TopNav = () => {
 
   const isHome = pathname === paths.root;
   return (
-    <div className="px-4 py-4 md:px-0 md:py-6 flex flex-col gap-4 sticky top-0 left-0 bg-gray-100 dark:bg-gray-900">
-      <div className="flex flex-col items-start md:flex-row justify-between gap-4 md:gap-8">
-        <div className="flex gap-6 items-center">
+    <div className="px-3 py-1 md:px-0 md:py-4 sticky top-0 left-0 bg-gray-100 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+      <div className="flex items-center justify-center relative">
+        <div>
           {!isHome && <BackButton onClick={handleBackClick} />}
-          <h1
-            className="font-bold uppercase tracking-widest text-lg sm:text-xl cursor-pointer"
-            onClick={handleTitleClick}
-          >
-            HEWS
-          </h1>
         </div>
-        {isHome && (
-          <div className="flex justify-end w-full">
-            <QuickFilters />
-          </div>
-        )}
+        <h1
+          className="font-bold uppercase tracking-widest text-base md:text-lg cursor-pointer"
+          onClick={handleTitleClick}
+        >
+          HEWS
+        </h1>
       </div>
     </div>
   );

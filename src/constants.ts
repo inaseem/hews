@@ -30,7 +30,6 @@ export const searchInQueryParamToValueMapping = {
 };
 
 export const searchInOptions: SelectOptionType[] = [
-  { key: 'all', label: 'All', value: 'all' },
   {
     key: 'front_page',
     label: 'Front Page',
@@ -40,11 +39,6 @@ export const searchInOptions: SelectOptionType[] = [
     key: 'stories',
     label: 'Stories',
     value: 'stories',
-  },
-  {
-    key: 'comments',
-    label: 'Comments',
-    value: 'comments',
   },
   {
     key: 'askhn',
